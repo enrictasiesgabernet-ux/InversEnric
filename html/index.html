@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexions Pokémon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>⚡ Reflexions d'un entrenador ⚡</h1>
+    </header>
+
+    <main>
+        <!-- TEXT -->
+        <section class="text-block">
+            <h2>Sobre el viatge</h2>
+            <p class="quote">
+                «Atrapar-los tots mai no va ser l'objectiu. L'objectiu era
+                descobrir qui esdevens quan deixes el poble d'on véns amb només
+                sis companys dins d'una motxilla i la promesa ingènua
+                que el món t'acceptarà tal com ets.»
+            </p>
+            <p>
+                Cada Pokémon que entra a la teva Pokéball és una decisió
+                irreversible: el separes de qui era i el converteixes en qui
+                serà al teu costat. En el fons, entrenar no és dominar —
+                és acompanyar una criatura mentre es transforma, sabent que
+                tu també et transformes amb ella. Evolucionar no és fer-se
+                més fort, sinó acceptar que el que eres ja no et serveix.
+            </p>
+            <p>
+                I quan al final arribes a la Lliga i mires enrere, entens
+                que el trofeu mai no era el campionat: era el camí fet amb
+                els qui van triar quedar-se.
+            </p>
+        </section>
+
+        <!-- IMATGE -->
+        <section class="media-block">
+            <h2>La mascota del viatge</h2>
+            <figure>
+                <img src="media/mico.jpg" alt="Mascota somrient" />
+                <figcaption>
+                    «Un somriure senzill recorda que la saviesa, de vegades,
+                    només és saber estar bé amb el que ets.»
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- VÍDEO -->
+        <section class="media-block">
+            <h2>Moment capturat</h2>
+            <figure>
+                <video controls preload="metadata" width="640">
+                    <source src="media/gatets.mp4" type="video/mp4">
+                    El teu navegador no suporta la reproducció de vídeo HTML5.
+                </video>
+                <figcaption>
+                    Contingut multimèdia servit a través del proxy invers
+                    i cachejat durant 10 minuts.
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- Info tècnica discreta per a l'avaluació -->
+        <section class="tech-info">
+            <h3>🔧 Info tècnica (per a l'avaluació)</h3>
+            <p>
+                Aquesta pàgina està servida per un dels dos backends
+                (<code>web1</code> o <code>web2</code>) a través d'un
+                <strong>proxy invers Nginx</strong> amb balanceig round-robin.
+                Els backends estan aïllats en una xarxa Docker interna i no
+                són accessibles directament des del host.
+            </p>
+            <ul>
+                <li><code>X-Backend</code> — nom del contenidor que ha respost</li>
+                <li><code>X-Upstream-Addr</code> — adreça interna de l'upstream</li>
+                <li><code>X-Cache-Status</code> — estat del cache (<code>/media/</code>)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Pràctica d'examen · Docker Compose · Nginx Reverse Proxy</p>
+    </footer>
+</body>
+</html>

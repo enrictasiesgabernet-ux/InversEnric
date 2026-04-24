@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #ffcb05 0%, #3b4cca 100%);
+    color: #222;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0 #3b4cca, 4px 4px 8px rgba(0,0,0,0.25);
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h2 {
+    color: #3b4cca;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+}
+
+h3 {
+    color: #3b4cca;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    border-left: 4px solid #ffcb05;
+    padding: 0.5rem 1.2rem;
+    background: #fafafa;
+    color: #444;
+    margin-bottom: 1.2rem;
+}
+
+code {
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #c7254e;
+}
+
+ul {
+    padding-left: 1.5rem;
+    line-height: 1.9;
+}
+
+figure {
+    text-align: center;
+}
+
+figure img,
+figure video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+figure img {
+    max-width: 300px;
+}
+
+figcaption {
+    margin-top: 0.75rem;
+    font-style: italic;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.tech-info {
+    background: #f7f8ff;
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid #e0e3f5;
+}
+
+.tech-info p,
+.tech-info ul {
+    font-size: 0.92rem;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+    opacity: 0.9;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
