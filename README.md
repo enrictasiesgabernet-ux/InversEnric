@@ -233,13 +233,11 @@ Cada línia mostrarà `upstream=web1:80` o `upstream=web2:80` i l'estat del cach
 
 ## Captures de pantalla
 
-Totes les captures estan disponibles a la carpeta `screenshots/`.
 
 ### 1. Funcionament del proxy invers
 
 La pàgina web és accessible a `http://localhost` gràcies al proxy Nginx, que rep totes les peticions i les reenvia als backends interns. El client només veu un únic punt d'entrada (port 80).
 
-![Funcionament del proxy invers](screenshots/01-proxy-funcionament.png)
 
 <img width="1918" height="1078" alt="1 web" src="https://github.com/user-attachments/assets/10064764-3096-46cd-915c-df94734321d6" />
 
@@ -252,7 +250,6 @@ El proxy alterna automàticament entre `web1` i `web2` a cada petició. La capç
 for i in 1 2 3 4; do curl -s -I http://localhost/ | grep -i x-backend; done
 ```
 
-![Balanceig round-robin](screenshots/02-balanceig.png)
 
 <img width="956" height="772" alt="2 Proxy" src="https://github.com/user-attachments/assets/261bca29-5204-4779-b7a0-a72666a000b6" />
 
@@ -261,7 +258,6 @@ for i in 1 2 3 4; do curl -s -I http://localhost/ | grep -i x-backend; done
 
 Els contenidors `web1` i `web2` **no publiquen ports** al host, i la xarxa `backend` està definida com a `internal: true`. Això garanteix que només s'hi pugui accedir des del proxy, mai directament des de l'exterior.
 
-![Xarxa aïllada](screenshots/03-xarxa-aillada.png)
 
 <img width="958" height="712" alt="3 xarxa" src="https://github.com/user-attachments/assets/83424da7-a56f-4027-b296-12873b493cec" />
 
