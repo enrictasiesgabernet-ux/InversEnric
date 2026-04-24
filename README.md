@@ -12,7 +12,7 @@ Desplegament d'una infraestructura web amb Docker Compose que compleix els requi
 
 ---
 
-## 📐 Arquitectura
+## Arquitectura
 
 ```
                     ┌────────────────────────┐
@@ -57,7 +57,7 @@ Desplegament d'una infraestructura web amb Docker Compose que compleix els requi
 
 ---
 
-## 🗂️ Estructura del projecte
+## Estructura del projecte
 
 ```
 .
@@ -76,7 +76,7 @@ Desplegament d'una infraestructura web amb Docker Compose que compleix els requi
 
 ---
 
-## 🎯 Decisions de disseny
+## Decisions de disseny
 
 ### Imatge escollida: `nginx:alpine`
 
@@ -120,12 +120,7 @@ El proxy defineix una `proxy_cache_path` i aplica `proxy_cache` **només** a la 
 
 ---
 
-## 🚀 Com aixecar l'entorn
-
-### Requisits
-
-- Docker Engine 20.10+
-- Docker Compose v2 (integrat com a `docker compose`)
+## Com aixecar l'entorn
 
 ### Passos
 
@@ -145,15 +140,10 @@ docker compose up -d
 #    http://localhost
 ```
 
-Per aturar-ho:
-
-```bash
-docker compose down
-```
 
 ---
 
-## ✅ Comandes de verificació
+## Comandes de verificació
 
 ### 1. Comprovar que els serveis estan en marxa
 
@@ -241,7 +231,7 @@ Cada línia mostrarà `upstream=web1:80` o `upstream=web2:80` i l'estat del cach
 
 ---
 
-## 📸 Captures de pantalla
+## Captures de pantalla
 
 Totes les captures estan disponibles a la carpeta `screenshots/`.
 
@@ -250,6 +240,9 @@ Totes les captures estan disponibles a la carpeta `screenshots/`.
 La pàgina web és accessible a `http://localhost` gràcies al proxy Nginx, que rep totes les peticions i les reenvia als backends interns. El client només veu un únic punt d'entrada (port 80).
 
 ![Funcionament del proxy invers](screenshots/01-proxy-funcionament.png)
+
+<img width="1918" height="1078" alt="1 web" src="https://github.com/user-attachments/assets/10064764-3096-46cd-915c-df94734321d6" />
+
 
 ### 2. Balanceig round-robin entre backends
 
@@ -261,48 +254,15 @@ for i in 1 2 3 4; do curl -s -I http://localhost/ | grep -i x-backend; done
 
 ![Balanceig round-robin](screenshots/02-balanceig.png)
 
+<img width="956" height="772" alt="2 Proxy" src="https://github.com/user-attachments/assets/261bca29-5204-4779-b7a0-a72666a000b6" />
+
+
 ### 3. Xarxa interna aïllada
 
 Els contenidors `web1` i `web2` **no publiquen ports** al host, i la xarxa `backend` està definida com a `internal: true`. Això garanteix que només s'hi pugui accedir des del proxy, mai directament des de l'exterior.
 
 ![Xarxa aïllada](screenshots/03-xarxa-aillada.png)
 
----
-
-## 🧪 Prova ràpida (tot en una línia)
-
-```bash
-docker compose up -d && sleep 3 && \
-echo "== Balanceig ==" && \
-for i in 1 2 3 4; do curl -s -I http://localhost/ | grep -i x-backend; done && \
-echo "== Cache (1a petició MISS, 2a HIT) ==" && \
-curl -s -I http://localhost/media/gatets.mp4 | grep -i x-cache-status && \
-curl -s -I http://localhost/media/gatets.mp4 | grep -i x-cache-status
-```
+<img width="958" height="712" alt="3 xarxa" src="https://github.com/user-attachments/assets/83424da7-a56f-4027-b296-12873b493cec" />
 
 ---
-
-## 🧹 Neteja
-
-```bash
-docker compose down          # Atura i elimina contenidors + xarxes
-docker compose down -v       # A més, elimina volums anònims
-```
-
----
-
-## 📋 Resum de compliment dels requisits
-
-| Requisit | Compliment |
-|----------|-----------|
-| Punt d'entrada únic al port 80 | ✅ Només `proxy` exposa `80:80` |
-| Dos servidors web + reverse proxy | ✅ `web1`, `web2`, `proxy` (nginx:alpine) |
-| Balanceig | ✅ `upstream` de Nginx (round-robin) |
-| Capçalera identificadora del backend | ✅ `X-Backend`, `X-Upstream-Addr` |
-| Xarxa interna aïllada | ✅ Xarxa `backend` amb `internal: true` |
-| Backends no accessibles des del host | ✅ Sense `ports:` publicats |
-| Xarxa Docker personalitzada | ✅ `frontend` + `backend` definides al compose |
-| Volum compartit entre backends | ✅ Bind mount `./html` als dos webs |
-| Contingut multimèdia cachejat | ✅ `proxy_cache` a `/media/` + `X-Cache-Status` |
-| Només imatges oficials de Docker Hub | ✅ Només `nginx:alpine` |
-| Desplegament amb docker compose | ✅ `docker compose up` aixeca tot l'entorn |
